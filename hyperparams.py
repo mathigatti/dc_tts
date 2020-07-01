@@ -32,19 +32,21 @@ class Hyperparams:
     attention_win_size = 3
 
     # data
-    data = "/content/drive/My Drive/asmr-project/cortazar"
-    # data = "/data/private/voice/kate"
-    test_data = 'texts.txt'
+    data = "/content/drive/My Drive/voces"
+    test_data = '/content/texts.txt'
 
+    # ENGLISH
+    #vocab = "PE abcdefghijklmnopqrstuvwxyz'.?" # P: Padding, E: EOS.
+    #max_N, max_T = 180, 210
+    #logdir = "logdir/LJ01"
+
+    # SPANISH
     vocab = u'''␀␃ !',-.:;?ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz¡¿ÁÅÉÍÓÚáæèéëíîñóöúü—'''
-    max_N, max_T = 382, 540
-    #vocab = "PE abcdefghijklmnñopqrstuvwxyz.¿?" # P: Padding, E: EOS.
-    #max_N = 180 # Maximum number of characters.
-    #max_T = 210 # Maximum number of mel frames.
+    max_N, max_T = 382, 522
+    logdir = "logdir/logdir"
 
     # training scheme
     lr = 0.001 # Initial learning rate.
-    logdir = "models/cortazar/logdir"
     sampledir = 'samples'
     #B = 32 # batch size
     B = 16 # batch size
