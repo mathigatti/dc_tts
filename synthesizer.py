@@ -18,7 +18,7 @@ from train import Graph
 from utils import *
 from data_load import load_text
 from scipy.io.wavfile import write
-from tqdm import tqdm
+from tqdm.notebook import tqdm
 import sys
 
 import logging
