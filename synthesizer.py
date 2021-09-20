@@ -21,6 +21,9 @@ from scipy.io.wavfile import write
 from tqdm import tqdm
 import sys
 
+import warnings
+warnings.filterwarnings('ignore')
+
 # Load graph
 g = Graph(mode="synthesize"); print("Graph loaded")
 
@@ -42,7 +45,7 @@ def synthesize(texts,out_folder):
 
         if len(texts) > 0:
             L = load_text(texts)
-            print(L)
+
             max_T = sum([len(text) for text in texts])*2
             # Feed Forward
             ## mel
@@ -61,7 +64,6 @@ def synthesize(texts,out_folder):
             Z = sess.run(g.Z, {g.Y: Y})
 
             for i, mag in enumerate(Z):
-                print("Working on file", i+1)
                 wav = spectrogram2wav(mag)
                 write(f"{out_folder}/{i}.wav", hp.sr, wav)
 
