@@ -21,8 +21,8 @@ from scipy.io.wavfile import write
 from tqdm import tqdm
 import sys
 
-import tensorflow as tf
-tf.get_logger().setLevel('INFO')
+import logging
+tf.get_logger().setLevel(logging.ERROR)
 
 # Load graph
 g = Graph(mode="synthesize"); print("Graph loaded")

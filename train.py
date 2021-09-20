@@ -17,8 +17,8 @@ import tensorflow as tf
 from utils import *
 import sys
 
-import tensorflow as tf
-tf.get_logger().setLevel('INFO')
+import logging
+tf.get_logger().setLevel(logging.ERROR)
 
 class Graph:
     def __init__(self, num=1, mode="train"):
@@ -145,19 +145,19 @@ if __name__ == '__main__':
     logdir = hp.logdir + "-" + str(num)
     sv = tf.train.Supervisor(logdir=logdir, save_model_secs=0, global_step=g.global_step)
 
-    t = tqdm(total=hp.num_iterations)
+    t = tqdm(total=50)
 
     with sv.managed_session() as sess:
         while 1:
             last_gs = 0
-            for _ in tqdm(range(g.num_batch), total=g.num_batch, ncols=70, leave=False, unit='b'):
+            for _ in range(g.num_batch), total=g.num_batch, ncols=70, leave=False, unit='b':
                 gs, _ = sess.run([g.global_step, g.train_op])
-                t.update(gs - last_gs)
                 last_gs = gs
 
                 # Write checkpoint files at every 1k steps
                 if gs % 1000 == 0:
                     sv.saver.save(sess, logdir + '/model_gs')
+                    t.update(1)
 
                     if num==1:
                         # plot alignment
