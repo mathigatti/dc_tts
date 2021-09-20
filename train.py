@@ -17,9 +17,8 @@ import tensorflow as tf
 from utils import *
 import sys
 
-import warnings
-warnings.filterwarnings('ignore')
-
+import tensorflow as tf
+tf.get_logger().setLevel('INFO')
 
 class Graph:
     def __init__(self, num=1, mode="train"):
@@ -155,7 +154,7 @@ if __name__ == '__main__':
                 gs, _ = sess.run([g.global_step, g.train_op])
                 t.update(gs - last_gs)
                 last_gs = gs
-                
+
                 # Write checkpoint files at every 1k steps
                 if gs % 1000 == 0:
                     sv.saver.save(sess, logdir + '/model_gs')

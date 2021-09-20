@@ -32,7 +32,7 @@ class Hyperparams:
     attention_win_size = 3
 
     # data
-    data = "/content/drive/My Drive/voces"
+    data = "/content/drive/MyDrive/voces"
     test_data = '/content/texts.txt'
 
     # ENGLISH
