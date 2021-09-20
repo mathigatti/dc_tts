@@ -150,7 +150,7 @@ if __name__ == '__main__':
     with sv.managed_session() as sess:
         while 1:
             last_gs = 0
-            for _ in range(g.num_batch), total=g.num_batch, ncols=70, leave=False, unit='b':
+            for _ in range(g.num_batch):
                 gs, _ = sess.run([g.global_step, g.train_op])
                 last_gs = gs
 
